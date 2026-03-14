@@ -1,0 +1,258 @@
+// Mock data for TaskRhythm demo
+// Replace with actual Supabase integration
+
+import { Task, TaskDefinition } from '@/lib/supabase'
+import { addDays, addHours, startOfToday } from 'date-fns'
+
+const today = startOfToday()
+
+export const mockTasks: Task[] = [
+  // Overdue tasks
+  {
+    id: 'task-1',
+    definition_id: 'def-1',
+    team_id: 'team-1',
+    assignee_id: 'user-2',
+    name: 'Weekly Security Review',
+    description: 'Review access logs, check for suspicious activity, verify backup status',
+    priority: 'high',
+    due_date: addDays(today, -1).toISOString(),
+    status: 'pending',
+    completed_at: null,
+    completed_by: null,
+    completion_notes: null,
+    skipped_reason: null,
+    created_at: addDays(today, -7).toISOString(),
+    updated_at: addDays(today, -1).toISOString()
+  },
+  {
+    id: 'task-2',
+    definition_id: 'def-2',
+    team_id: 'team-1',
+    assignee_id: 'user-1',
+    name: 'Daily Backup Check',
+    description: 'Verify all automated backups completed successfully',
+    priority: 'critical',
+    due_date: addHours(today, -12).toISOString(),
+    status: 'pending',
+    completed_at: null,
+    completed_by: null,
+    completion_notes: null,
+    skipped_reason: null,
+    created_at: addDays(today, -1).toISOString(),
+    updated_at: addHours(today, -12).toISOString()
+  },
+  
+  // Today tasks
+  {
+    id: 'task-3',
+    definition_id: 'def-3',
+    team_id: 'team-1',
+    assignee_id: 'user-1',
+    name: 'Review Pull Requests',
+    description: 'Review and merge pending pull requests from team members',
+    priority: 'medium',
+    due_date: addHours(today, 14).toISOString(),
+    status: 'pending',
+    completed_at: null,
+    completed_by: null,
+    completion_notes: null,
+    skipped_reason: null,
+    created_at: today.toISOString(),
+    updated_at: today.toISOString()
+  },
+  {
+    id: 'task-4',
+    definition_id: 'def-4',
+    team_id: 'team-1',
+    assignee_id: 'user-1',
+    name: 'Team Standup Notes',
+    description: 'Take notes during daily standup and share with team',
+    priority: 'low',
+    due_date: addHours(today, 17).toISOString(),
+    status: 'pending',
+    completed_at: null,
+    completed_by: null,
+    completion_notes: null,
+    skipped_reason: null,
+    created_at: today.toISOString(),
+    updated_at: today.toISOString()
+  },
+  {
+    id: 'task-5',
+    definition_id: null,
+    team_id: 'team-1',
+    assignee_id: 'user-3',
+    name: 'Customer Report Review',
+    description: 'Review Q4 customer metrics report before sending to clients',
+    priority: 'high',
+    due_date: addHours(today, 10).toISOString(),
+    status: 'completed',
+    completed_at: addHours(today, 10.5).toISOString(),
+    completed_by: 'user-3',
+    completion_notes: 'Reviewed and approved. Sent to clients.',
+    skipped_reason: null,
+    created_at: addDays(today, -2).toISOString(),
+    updated_at: addHours(today, 10.5).toISOString()
+  },
+  
+  // Upcoming tasks
+  {
+    id: 'task-6',
+    definition_id: 'def-5',
+    team_id: 'team-1',
+    assignee_id: 'user-4',
+    name: 'Monthly Budget Review',
+    description: 'Review monthly expenses and update budget forecast',
+    priority: 'medium',
+    due_date: addDays(today, 2).toISOString(),
+    status: 'pending',
+    completed_at: null,
+    completed_by: null,
+    completion_notes: null,
+    skipped_reason: null,
+    created_at: today.toISOString(),
+    updated_at: today.toISOString()
+  },
+  {
+    id: 'task-7',
+    definition_id: 'def-6',
+    team_id: 'team-1',
+    assignee_id: 'user-2',
+    name: 'Server Maintenance',
+    description: 'Apply security patches and restart services',
+    priority: 'critical',
+    due_date: addDays(today, 3).toISOString(),
+    status: 'pending',
+    completed_at: null,
+    completed_by: null,
+    completion_notes: null,
+    skipped_reason: null,
+    created_at: today.toISOString(),
+    updated_at: today.toISOString()
+  },
+  {
+    id: 'task-8',
+    definition_id: 'def-7',
+    team_id: 'team-1',
+    assignee_id: 'user-5',
+    name: 'Weekly Team Sync',
+    description: 'Prepare agenda and lead weekly team meeting',
+    priority: 'medium',
+    due_date: addDays(today, 5).toISOString(),
+    status: 'pending',
+    completed_at: null,
+    completed_by: null,
+    completion_notes: null,
+    skipped_reason: null,
+    created_at: today.toISOString(),
+    updated_at: today.toISOString()
+  },
+  
+  // More completed tasks
+  {
+    id: 'task-9',
+    definition_id: 'def-1',
+    team_id: 'team-1',
+    assignee_id: 'user-2',
+    name: 'Previous Security Review',
+    description: "Last week's security review",
+    priority: 'high',
+    due_date: addDays(today, -7).toISOString(),
+    status: 'completed',
+    completed_at: addDays(today, -7).toISOString(),
+    completed_by: 'user-2',
+    completion_notes: 'All checks passed, backups verified',
+    skipped_reason: null,
+    created_at: addDays(today, -14).toISOString(),
+    updated_at: addDays(today, -7).toISOString()
+  },
+  {
+    id: 'task-10',
+    definition_id: 'def-3',
+    team_id: 'team-1',
+    assignee_id: 'user-1',
+    name: 'Previous PR Review',
+    description: 'Previous pull request review',
+    priority: 'medium',
+    due_date: addDays(today, -2).toISOString(),
+    status: 'completed',
+    completed_at: addDays(today, -2).toISOString(),
+    completed_by: 'user-1',
+    completion_notes: '3 PRs merged',
+    skipped_reason: null,
+    created_at: addDays(today, -3).toISOString(),
+    updated_at: addDays(today, -2).toISOString()
+  }
+]
+
+export const mockTaskDefinitions: TaskDefinition[] = [
+  {
+    id: 'def-1',
+    team_id: 'team-1',
+    created_by: 'user-1',
+    name: 'Weekly Security Review',
+    description: 'Review access logs, check for suspicious activity',
+    priority: 'high',
+    recurrence_type: 'weekly',
+    recurrence_config: { days: ['monday'], time: '09:00' },
+    rotation_enabled: false,
+    rotation_team_members: [],
+    rotation_type: 'round_robin',
+    default_assignee: 'user-2',
+    is_active: true,
+    created_at: addDays(today, -30).toISOString(),
+    updated_at: addDays(today, -30).toISOString()
+  },
+  {
+    id: 'def-2',
+    team_id: 'team-1',
+    created_by: 'user-1',
+    name: 'Daily Backup Check',
+    description: 'Verify automated backups completed',
+    priority: 'critical',
+    recurrence_type: 'daily',
+    recurrence_config: { time: '06:00' },
+    rotation_enabled: false,
+    rotation_team_members: [],
+    rotation_type: 'round_robin',
+    default_assignee: 'user-1',
+    is_active: true,
+    created_at: addDays(today, -30).toISOString(),
+    updated_at: addDays(today, -30).toISOString()
+  },
+  {
+    id: 'def-3',
+    team_id: 'team-1',
+    created_by: 'user-1',
+    name: 'Review Pull Requests',
+    description: 'Review and merge pending PRs',
+    priority: 'medium',
+    recurrence_type: 'daily',
+    recurrence_config: { time: '14:00' },
+    rotation_enabled: true,
+    rotation_team_members: ['user-1', 'user-2', 'user-3'],
+    rotation_type: 'round_robin',
+    default_assignee: null,
+    is_active: true,
+    created_at: addDays(today, -30).toISOString(),
+    updated_at: addDays(today, -30).toISOString()
+  },
+  {
+    id: 'def-4',
+    team_id: 'team-1',
+    created_by: 'user-1',
+    name: 'Team Standup Notes',
+    description: 'Take notes during daily standup',
+    priority: 'low',
+    recurrence_type: 'daily',
+    recurrence_config: { time: '09:30' },
+    rotation_enabled: true,
+    rotation_team_members: ['user-1', 'user-2', 'user-3', 'user-4', 'user-5'],
+    rotation_type: 'round_robin',
+    default_assignee: null,
+    is_active: true,
+    created_at: addDays(today, -30).toISOString(),
+    updated_at: addDays(today, -30).toISOString()
+  }
+]
